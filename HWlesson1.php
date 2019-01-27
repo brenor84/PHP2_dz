@@ -74,3 +74,50 @@ $object=new GiroScooterHig("POLARIS PBS",9900,15,20,120);
 // $object->inf();
 
 ///// не получается сделать валидным клас наследника
+
+// class A {
+//     public function foo() {
+//         static $x = 0;
+//         echo ++$x;
+//     }
+// }
+// $a1 = new A();
+// $a2 = new A();
+// $a1->foo();
+// $a2->foo();
+// $a1->foo();
+// $a2->foo();
+
+// итерация переменной на каждом шаге
+
+// class A {
+//     public function foo() {
+//         static $x = 0;
+//         echo ++$x;
+//     }
+// }
+// class B extends A {
+// }
+// $a1 = new A();
+// $b1 = new B();
+// $a1->foo(); 
+// $b1->foo(); 
+// $a1->foo(); 
+// $b1->foo();
+
+// тут наследование и итерация происходит только при вызове класса по отдельности
+
+class A {
+    public function foo() {
+        static $x = 0;
+        echo ++$x;
+    }
+}
+class B extends A {
+}
+$a1 = new A;
+$b1 = new B;
+$a1->foo(); 
+$b1->foo(); 
+$a1->foo(); 
+$b1->foo(); 
