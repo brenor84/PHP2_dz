@@ -18,17 +18,17 @@ class GiroScooter {
         $this->distance=$distance;
     }
     public function getName($name){
-        return $this->$name;
+        return $this->name;
     }
     public function getPrice($price){
-        return $this-$price;
+        return $this->price;
     }
    
     public function getMaxSpeed($maxSpeed){
-        return $this->$maxSpeed;
+        return $this->maxSpeed;
     }
     public function getDistance($distance){
-        return $this-$distance;
+        return $this->distance;
     }
 
     function __construct($name,$price,$maxSpeed,$distance){
@@ -37,15 +37,16 @@ class GiroScooter {
         $this->setMaxSpeed($maxSpeed);
         $this->setDistance($distance);
         $this->drive();
-        $this->inf();
+        // $this->inf();
     }
     
     function drive(){
-        echo " Гироскутер ".$this->name." стоит ".$this->price."</br>";
+        echo "<hr>"." Гироскутер ".$this->name." стоит ".$this->price."</br>"."Максимальная скорость ".$this->maxSpeed."км/ч".";".
+        " запас хода на одном заряде ".$this->distance."км."."<br>";;
     }
-    function inf(){
-        echo "Максимальная скорость ".$this->maxSpeed."км/ч".";"." запас хода на одном заряде ".$this->distance."км."."<br>";
-    }
+    // function inf(){
+    //     echo 
+    // }
 }   
 
 new GiroScooter(HOVERBOT,8500,15,10);
@@ -62,18 +63,18 @@ class GiroScooterHig extends GiroScooter{
     function drive(){
         parent::drive();
     }
+    public function getMaxWeight(){
+        return $this->maxWeight;
+    }
 
     function inf(){
-        parent::inf();
-        echo "Максимальный вес ".$this->maxWeight."кг";
+        echo "Максимальный вес ".$this->getMaxWeight($maxWeight)."кг"."<br>";
     }
 }
 
 $object=new GiroScooterHig("POLARIS PBS",9900,15,20,120);
-// $object->drive();
-// $object->inf();
-
-///// не получается сделать валидным клас наследника
+$object->drive();
+$object->inf();
 
 // class A {
 //     public function foo() {
@@ -88,7 +89,7 @@ $object=new GiroScooterHig("POLARIS PBS",9900,15,20,120);
 // $a1->foo();
 // $a2->foo();
 
-// итерация переменной на каждом шаге
+// итерация переменной на каждом шаге внутри класса
 
 // class A {
 //     public function foo() {
@@ -107,17 +108,18 @@ $object=new GiroScooterHig("POLARIS PBS",9900,15,20,120);
 
 // тут наследование и итерация происходит только при вызове класса по отдельности
 
-class A {
-    public function foo() {
-        static $x = 0;
-        echo ++$x;
-    }
-}
-class B extends A {
-}
-$a1 = new A;
-$b1 = new B;
-$a1->foo(); 
-$b1->foo(); 
-$a1->foo(); 
-$b1->foo(); 
+// class A {
+//     public function foo() {
+//         static $x = 0;
+//         echo ++$x;
+//     }
+// }
+// class B extends A {
+// }
+// $a1 = new A;
+// $b1 = new B;
+// $a1->foo(); 
+// $b1->foo(); 
+// $a1->foo(); 
+// $b1->foo(); 
+// разница только в скобках класса, их можно ставить или нет.
